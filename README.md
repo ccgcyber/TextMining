@@ -1,83 +1,83 @@
-# 文本挖掘系统 Text Mining System
+# Text Mining System
 
 ***
 
-## 系统说明
+## instructions
 
-* 集成了**文本过滤、去重**及**邮件实时通知**的功能
-* 集成了**文本关键词提取**的功能
-* 集成了**文本分类**即**打标签**的功能
-* 集成了**文本推荐**即**热点评价**的功能
-* **支持中英文**
+* Integrated ** text filtering, to weight ** and ** mail real-time notification ** function
+* Integrated ** text keyword extraction ** function
+* Integrated ** text classification ** ** ** tag function
+* Integrated ** text recommended ** ** hot evaluation ** function
+* ** English and Chinese support **
 
-## 系统架构图
+## System architecture diagram
 ![image](Architecture-of-Text-Mining-System.png)
 
-## 关于分词
-**英文分词，采用nltk工具包进行分词**  
+## on the participle
+** English participle, the use of nltk toolkit for segmentation **
 
 	pip install nltk 
 
-**中文分词，采用jieba工具包进行分词**  
+** Chinese word segmentation, using jieba toolkit for segmentation **
 
 	pip install jieba 
 
-**jieba分词**
+** jieba participle **
 
-	dict 主词典文件 
-	user_dict 用户词典文件，即分词白名单 
+	dict main dictionary file
+	user_dict user dictionary file, the white list of participles
 
-**user_dict为分词白名单**
-* 如果添加的过滤词（包括黑名单和白名单）无法正确被jieba正确分词，则将该需要添加的单词及词频加入到主词典dict文件中或者用户词典user_dict，一行一个（词频也可省略）  
+** user_dict is a white list of participles **
+* If the added filter words (including blacklist and whitelist) can not be correctly spelled by jieba correctly, add the word and word frequency to be added into the dict file or the user dictionary user_dict (word frequency can be omitted)
 
-## 关于停用词，黑名单，白名单
+## About stop words, black list, white list
 
-**stopwords为停用词**    
-* 可以随时添加停用的单词，一行一个  
+** stopwords is the stop word **
+* You can add disabled words at any time, one by one
 
-**blackwords为过滤词黑名单**  
-* 可以随时添加过滤的单词，一行一个  
+** blackwords for filtering words blacklist **
+* You can add filtered words at any time, one by one
 
-**writewords为关键词白名单**  
-* 可以随时添加关键的单词，一行一个 
+** writewords as keyword whitelist **
+* You can add key words at any time, one by one
 
-## 关于特征词
+## About feature words
 
-* 特征词用于分类，用于计算文本特征
-* 特征词的选取可以通过该词在训练集中的词频数来确定
-* 特征词的维度可以设置
+* Feature words are used for classification to calculate textual features
+* The selection of feature words can be determined by the word frequency in the training set
+* Feature word dimensions can be set
 
-## 关于配置
+## About configuration
 
-**config文件：**  
-* 可以进行服务器配置，针对数据库中制订collection的不同字段column 
-* 可以限定操作数据库条目的数量，默认时间从最近往前推
-* 可以选择语言(中文，英文)
-* 可以设置分类特征词词典的维度
-* 可以设置是否接收邮件通知
-* 可以设置版本加速，如果加速分类，此时会将文本特征词和分类模型固定化！因此，如果要测试分类特征词词典的维度、分类器的特征和算法，需要取消加速。
+** config file: **
+* Server configuration can be made for the development of the collection of different fields in the database column
+* You can limit the number of operating database entries, the default time pushed forward from the recent
+* Can choose language (Chinese, English)
+* You can set the classification feature dictionary word dimension
+* You can set whether to receive mail notification
+* You can set the version acceleration, if accelerated classification, the text feature words and classification model will be fixed! Therefore, if you want to test the dimensions of the classification feature dictionary, the features of the classifier and the algorithm, you need to cancel the acceleration.
 
-**程序文件：**  
-* 可以更改特征词典的生成，通过该词的词频数或者包含该词的文档频率
-* 可以更改文本过滤及去重算法
-* 可以更改关键词提取算法，可选基于特征词提取、基于Tf提取、基于IDf提取、基于TfIDf提取，可以更改前K个关键词筛选方法
-* 可以更改训练集和测试集的特征生成，基于特征词，可选Bool特征、Tf特征、IDf特征(无区分)、TfIDf特征，可以选择进行特征选择或降维
-* 可以更改文本分类算法，可选SVC、LinearSVC、MultinomialNB、LogisticRegression、KNeighborsClassifier、DecisionTreeClassifier，可以更改算法调参寻优的方法
-* 可以更改文本推荐算法
+**program files:**  
+* You can change the generation of a feature dictionary, the frequency of words that pass through the word, or the frequency of documents that contain the word
+* You can change the text filtering and deduplication algorithm
+* You can change the keyword extraction algorithm, optionally based on feature extraction, based on Tf extraction, based on IDf extraction, based on TfIDf extraction, you can change the first K keywords screening method
+* You can change the feature generation of the training set and the test set based on feature words, optional Bool features, Tf features, IDf features (no differentiation), TfIDf features, and optionally feature selection or dimensionality reduction
+* You can change the text classification algorithm, optional SVC, LinearSVC, MultinomialNB, LogisticRegression, KNeighborsClassifier, DecisionTreeClassifier, you can change the method of algorithm tuning optimization
+* You can change the text recommendation algorithm
 
-## 其他说明
-* 更改分词文件dict user_dict lag
-需要事先手动删除datas文件夹
+## other instructions
+* Change the word segmentation file dict user_dict lag
+Need to manually delete the datas folder beforehand
 
-* 更改训练集
-需要事先手动删除all_words_dict和train_datas
+* Change training set
+You need to manually delete all_words_dict and train_datas manually beforehand
 
-* 更改文件stopwords blackwords writewords fea_dict_size
-重新运行程序即可
+* Change the file stopwords blackwords writewords fea_dict_size
+Re-run the program can be
 
-## 关于环境搭建
+## on the environment to build
 
-**Ubuntu下numpy scipy matplotlib的安装**  
+** Installation of numpy scipy matplotlib under Ubuntu **
 
     sudo apt-get update
     sudo apt-get install git g++ gfortran
@@ -91,7 +91,7 @@
 	sudo apt-get install python-numpy
 	sudo apt-get install python-scipy
 	sudo apt-get install python-matplotlib
-	或
+	or
 	sudo pip numpy
 	sudo pip scipy
 	sudo pip matplotlib	
